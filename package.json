@@ -4,7 +4,9 @@
   "description": "Apollo data source for MongoDB",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist --ignore **/*.test.js",
+    "copytypings": "copyfiles --flat src/*.d.ts dist",
+    "buildlib": "babel src -d dist --ignore **/*.test.js",
+    "build": "npm run buildlib && npm run copytypings",
     "dev": "babel src -d dist --watch --ignore **/*.test.js",
     "test": "jest --watch",
     "prepublishOnly": "npm run build",
@@ -25,6 +27,7 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "babel-jest": "^24.7.1",
+    "copyfiles": "^2.1.1",
     "graphql": "^14.2.1",
     "jest": "^24.7.1",
     "mongodb": "^3.3.2",
